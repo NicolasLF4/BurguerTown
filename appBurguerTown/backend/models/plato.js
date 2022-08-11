@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var DomSchema = Schema({
+var PlatoSchema = Schema({
 	dom: String,
 	tomarLista: Boolean,
 	recordatorio: String,
@@ -13,4 +13,4 @@ var DomSchema = Schema({
 	llave: Number,
 });
 
-module.exports = mongoose.model('dom', DomSchema, 'dom');
+module.exports = mongoose.model('plato', PlatoSchema, 'plato');

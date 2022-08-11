@@ -1,10 +1,7 @@
 'use strict'
 
-var Finanza = require('../models/finanza');
+var Plato = require('../models/plato');
 const cron = require('node-cron');
-const Iglesias = require('../models/iglesias');
-const finanzaWeek = require('../models/finanzaWeek');
-const dom = require('../models/dom');
 const moment = require('moment');
 
 const optionsPaginate = {

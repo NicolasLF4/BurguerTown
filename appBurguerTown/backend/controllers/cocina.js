@@ -1,13 +1,11 @@
 'use strict'
 
 const cron = require('node-cron');
-const jwt = require('jsonwebtoken')
-var Lista = require('../models/lista');
-var User = require('../models/user');
-var Iglesias = require('../models/iglesias');
-var Dom = require('../models/dom');
+const jwt = require('jsonwebtoken');
 var fs = require('fs');
 var path = require('path');
+
+var Plato = require('../models/plato');
 
 
 var controller = {
