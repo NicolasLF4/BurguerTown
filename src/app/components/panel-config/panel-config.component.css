@@ -1,0 +1,71 @@
+.cont-config {
+    background-color: #242424;
+    
+    height: 100vh;
+}
+
+.cont-btn-float {
+    position: fixed;
+    right: 25px;
+    bottom: 15px;
+    
+}
+
+.cont-btn-float .btn-modal {
+    text-decoration: none;
+    border-radius: 50%;
+    padding: 6px 15px 6px 15px;
+    border: 1.5px solid #E87B13;
+    background-color: #E87B13;
+}
+
+.cont-btn-float .btn-modal h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Roboto';
+    font-weight: 300;
+    color:#242424;
+}
+
+.cont-btn-float .btn-modal:hover {
+    box-shadow: 0 0 6px #E87B13;
+}
+
+.modal-color {
+    background: #242424;
+}
+
+.btn-primary {
+    background: #E87B13 !important;
+    border: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 6px #E87B13;
+}
+
+.modal-title {
+    color: #B0B0B0;
+}
+
+.category-form {
+    width: 100%;
+    padding: 15px;
+}
+
+.category-form input {
+    width: 100%;
+    color: #B0B0B0;
+    font-size: 28px;
+    border: none;
+    background: none;
+    outline: 0px;
+    padding: 8px;
+    border-bottom: 1px solid #E87B13;
+    
+}
+
+
+
+
