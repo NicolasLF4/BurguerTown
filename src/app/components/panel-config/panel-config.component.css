@@ -66,6 +66,64 @@
     
 }
 
+.cont-category {
+    background: none;
+    border-radius: 10%;
+    
+}
+
+.cont-category .cont-header-category {
+    display: flex ;
+    background-color: black;
+    padding: 10px;
+}
+
+.cont-header-category h3 {
+    font-size: 32px;
+    font-family: 'Roboto';
+    font-weight: 200;
+    color: #E87B13;
+    
+}
+
+.cont-header-category  {
+/* display: inline-block; */
+padding: 10px;
+
+}
+
+.cont-btn {
+    position: absolute;
+}
+
+.cont-btn .btn-agreg-plato {
+    border-radius: 50%;
+    text-decoration: none;
+    position: relative;
+    right: 0;
+    align-items: center;
+    text-align: center;
+
+}
+
+.cont-header-category .btn-agreg-plato a {
+    
+    /* margin: 10px; */
+    
+
+}
+
+.cont-platos {
+    width: 100%;
+    background-color: none;
+    padding-left: 15px;
+    margin-top: 20px;
+}
+.cont-platos p {
+    color: #B0B0B0;
+    /* padding: ; */
+}
+
 
 
 

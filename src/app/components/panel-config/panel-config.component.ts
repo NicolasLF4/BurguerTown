@@ -9,6 +9,7 @@ export class PanelConfigComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit(): void {
   }
 

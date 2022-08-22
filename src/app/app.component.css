@@ -1,7 +1,7 @@
-* {
+/* * {
     margin: 0;
     padding: 0;;
-}
+} */
 
 .cont-container {
     width: calc(100%-270px);
