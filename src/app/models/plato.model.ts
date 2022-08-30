@@ -1,12 +1,12 @@
-export class User {
+export class Plato {
     constructor(
-        public precio: number,
-        public description: string,
-        public image: string,
-        public name: string,
-        public numberPerson: string, //cantidad de personas que comen
-        public category: string,
-        public establishment: string //Nombre completo
+        public precio: Number,
+        public description: String,
+        public image: String,
+        public name: String,
+        public numberPerson: String, //cantidad de personas que comen
+        public category: String,
+        public establishment: String //Nombre completo
 
         
     ){}

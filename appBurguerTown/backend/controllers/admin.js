@@ -219,14 +219,7 @@ var controller = {
 
 
 
-// cron.schedule('1 3 * * Thursday', () => {
-//     negarLista();
-// });
-cron.schedule('* * * * *', () => {
 
-    // cron.schedule('1 4 * * Saturday', () => {
-    controller.CierreFinanzaSemanal();
-});
 
 
 module.exports = controller;

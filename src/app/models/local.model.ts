@@ -1,12 +1,14 @@
 
 export class Local {
 	constructor(
-		public nombre: string, //Nombre abreviado
-        public direccion: string,
-        public ultimoPago: Number,
-        public suspender: boolean,
-        public namePerson: string,
-        public phone: string,
-        public numeroMesas: number
+		public name: String, //Nombre abreviado
+        public direction: String,
+        public lastPayment: Number,
+        public suspend: Boolean,
+        public namePerson: String,
+        public phone: String,
+        public numeroMesas: Number,
+        public establishment: String //Nombre completo
+
 	){}
 }

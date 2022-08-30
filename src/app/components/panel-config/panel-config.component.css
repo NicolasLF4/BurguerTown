@@ -51,7 +51,7 @@
 
 .category-form {
     width: 100%;
-    padding: 15px;
+    padding-top: 15px;
 }
 
 .category-form input {
@@ -62,13 +62,13 @@
     background: none;
     outline: 0px;
     padding: 8px;
-    border-bottom: 1px solid #E87B13;
+    /* border-bottom: 1px solid #E87B13; */
     
 }
 
 .cont-category {
     background: none;
-    border-radius: 10%;
+    /* border-radius: ; */
     
 }
 
@@ -76,6 +76,10 @@
     display: flex ;
     background-color: black;
     padding: 10px;
+}
+
+.cont-header-category .cont-title {
+    float: left;
 }
 
 .cont-header-category h3 {
@@ -93,35 +97,48 @@ padding: 10px;
 }
 
 .cont-btn {
-    position: absolute;
+   width: 100%;
+   align-items: center;
+   text-align: center;
 }
+
 
 .cont-btn .btn-agreg-plato {
-    border-radius: 50%;
+    
     text-decoration: none;
-    position: relative;
-    right: 0;
-    align-items: center;
-    text-align: center;
-
+    float: right;
 }
 
-.cont-header-category .btn-agreg-plato a {
-    
-    /* margin: 10px; */
-    
+.cont-btn .btn-agreg-plato button {
+    border-radius: 50%;
+    width: 30px;
+    margin-top: 10px;
+    text-decoration: none;
+    background: #E87B13;
+    border-bottom: 2px  2px 2px 2px solid #E87B13;
+}
 
+.cont-btn .btn-agreg-plato button:hover {
+    box-shadow: 0 0 6px #E87B13;
 }
 
 .cont-platos {
     width: 100%;
     background-color: none;
     padding-left: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
+    /* display: flex; */
 }
-.cont-platos p {
+.cont-platos .plato-name {
     color: #B0B0B0;
-    /* padding: ; */
+    float: left;
+    
+}
+
+.cont-platos .plato-value {
+    color: #B0B0B0;
+    float: right;
+    margin-right: 10px;
 }
 
 
