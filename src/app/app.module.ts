@@ -8,6 +8,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { FuncionesComponent } from './components/funciones/funciones.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FuncionesComponent } from './components/funciones/funciones.component';
     MenuComponent,
     NavbarComponent,
     UsuariosComponent,
-    FuncionesComponent
+    FuncionesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
