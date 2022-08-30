@@ -27,9 +27,12 @@
               "src/assets"
             ],
             "styles": [
+              "appBurguerTown/assets/css/bootstrap/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "appBurguerTown/assets/js/bootstrap/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
