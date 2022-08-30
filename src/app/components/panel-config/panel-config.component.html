@@ -1,26 +1,60 @@
 <div class="cont-config">
 <p>configuracion</p>
-<div class="row">
-<div class="cont-category col-4">
+<div class="row" *ngIf="allCategorys">
+  
+<div class="cont-category col-4" *ngFor="let data of allCategorys">
 
   <div class="cont-header-category">
-    <h3 class="title-category">titulo categoria</h3>
+    <div class="cont-title">
+      <h3 class="title-category">{{data.name}}</h3>
+    </div>
     <div class="cont-btn">
-    <!-- <button class="btn-agreg-plato"><a href=""><i class="fa-solid fa-plus fa-2xs"></i></a></button> -->
+      <a class="btn-agreg-plato"><button (click)="showModalCategory(data._id)" ><i class="fa-solid fa-plus fa-2xs"></i></button></a>
     </div>
   </div>
-  <!-- platos -->
-  <div class="cont-platos">
-    <p class="plato">plato</p>
-    <p class="plato">plato</p>
-    <p class="plato">plato</p>
-    <p class="plato">plato</p>
+  
+
+
+  <!-- modal plato -->
+  <div class="agreg-Plato modal"  id="{{data._id}}" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-1">
+    <div class="modal-dialog">
+
+      <div class="modal-content modal-color">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar categoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form class="category-form row" [formGroup]="formPlato">
+
+            <input class="col-6" type="text" placeholder="Nombre del Plato" formControlName="name">
+            <input  class="col-6" type="text" placeholder="Precio" formControlName="precio">
+
+            <div class="modal-footer">             
+              <button  class="btn btn-primary" (click)="sendPlato(data.name)">{{data.name}}</button>
+            </div>
+          </form>
+
+        </div>
+    </div> 
+    </div>
   </div>
 
-</div>
+  <!-- platos -->
+    <div *ngFor="let dat of platosPerCategory"> 
+      <div class="cont-platos row" *ngIf="dat.category == data.name">    
+        <div class="w-100">
+          <p class="plato-name">{{dat.name}}</p>
+          <p class="plato-value">${{dat.precio}}</p>
+        </div>   
+      </div>
+    </div>
 </div>
 
-<!-- botn flotante -->
+</div>
+
+<!-- btn flotante -->
 <div class="cont-btn-float">
 
   <button class="btn-modal" data-bs-toggle="modal" data-bs-target="#modal-config"><h2>+</h2></button>
@@ -40,13 +74,15 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form class="category-form">
-              <input type="text"  placeholder="Categoria" ngModel="name">
-            </form>
-            </div>
-            <div class="modal-footer">
-              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
-              <button type="button" class="btn btn-primary"><p>guardar</button>
+
+              <form class="category-form" [formGroup]="formCategory">
+                <input type="text" placeholder="Categoria" formControlName="name">
+
+                <div class="modal-footer">             
+                  <button  class="btn btn-primary" (click)="sendCategory()" [disabled]="formCategory.invalid">guardar</button>
+                </div>
+              </form>
+
             </div>
         </div> 
        
