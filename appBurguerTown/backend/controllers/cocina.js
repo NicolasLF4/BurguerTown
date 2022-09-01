@@ -8,6 +8,7 @@ var path = require('path');
 var Plato = require('../models/plato');
 var Category = require('../models/category');
 var Local = require('../models/local');
+var User = require('../models/user');
 
 
 var controller = {
@@ -212,8 +213,8 @@ var controller = {
     /* Login youtube */
     login: function(req, res) {
         let userData = req.body
-
-        User.findOne({ mailAccess: userData.mailAccess }, (error, user) => {
+        console.log(userData);
+        User.findOne({ mail: userData.mailAccess }, (error, user) => {
             if (error) {
                 console.log(error)
             } else {
@@ -223,7 +224,6 @@ var controller = {
                 } else if (user.password !== userData.password) {
                     console.log("Contra mal");
                     res.status(401).send('Invalid password')
-
                 } else {
                     console.log("Estoy en el final de todo");
                     let payload = { subject: user._id }

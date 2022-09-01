@@ -51,7 +51,7 @@ router.post('/registerCategory', CocinaController.registerCategory);
 
 
 
-// router.post('/login', CocinaController.login);
+router.post('/login', CocinaController.login);
 
 
 // router.post('/register', verifyToken, CocinaController.register); /*, verifyToken*/

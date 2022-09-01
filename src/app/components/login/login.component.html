@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="color-bg">
+    <br>
+
+
+    <!-- DESKTOP -->
+    <a [routerLink]="['/']">
+        <div class="cont-top-desktop">
+            <img class="logo-desktop" src="../../../assets/img/720LogoySloganDegradado.png" alt="">
+        </div>
+    </a>
+    <div class="bg"></div>
+
+
+    <div class="container box-log" id="center">
+        <div class="row">
+            <form action="">
+                <div class="form-group">
+                    <input type="email" class="form-control border-mail" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="E-MAIL" [(ngModel)]="loginUserData.mailAccess" name="mailAccess" required>
+                </div>
+                <!-- form-group -->
+                <div class="form-group">
+                    <input type="password" class="form-control border-mail" placeholder="CONTRASEÑA" [(ngModel)]="loginUserData.password" name="password" required>
+                </div>
+                <!-- form-group -->
+                <div class="div bot-log">
+                    <button type="submit" class="btn btn-login" (click)="loginUser()">INICIAR SESIÓN</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+
+  
+
+
+</div>

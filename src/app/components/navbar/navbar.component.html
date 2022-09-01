@@ -5,16 +5,19 @@
 
         <ul class="nav flex-column cont-navbar">
             <li class="nav-item">
-                <a class="navLink" [routerLink]="['/menu']"><i class="fa-solid fa-bars fa-sm icon-size"></i>Menu</a>
+                <a class="navLink" [routerLink]="['/dashboard/menu']"><i class="fa-solid fa-bars fa-sm icon-size"></i>Menu</a>
             </li>
             <li class="nav-item">
-                <a class="navLink" [routerLink]="['/usuarios']"><i class="fa-solid fa-utensils fa-sm icon-size"></i>Usuarios</a>
+                <a class="navLink" [routerLink]="['/dashboard/usuarios']"><i class="fa-solid fa-utensils fa-sm icon-size"></i>Usuarios</a>
             </li>
             <li class="nav-item">
-                <a class="navLink" [routerLink]="['/funciones']"><i class="fa-solid fa-ranking-star fa-sm icon-size"></i>Funciones</a>
+                <a class="navLink" [routerLink]="['/dashboard/funciones']"><i class="fa-solid fa-ranking-star fa-sm icon-size"></i>Funciones</a>
             </li>
             <li class="nav-item">
-                <a class="navLink" [routerLink]="['/configuracion']"><i class="fa-solid fa-gear fa-sm icon-size"></i>Configuracion</a>
+                <a class="navLink" [routerLink]="['/dashboard/configuracion']"><i class="fa-solid fa-gear fa-sm icon-size"></i>Configuracion</a>
+            </li>
+            <li class="nav-item">
+                <a class="navLink" (click)="_authService.logoutUser()"><i class="fa-solid fa-gear fa-sm icon-size"></i>Cerrar sesión</a>
             </li>
         </ul>
 
