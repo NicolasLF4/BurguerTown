@@ -45,6 +45,7 @@ router.get('/getCategorys/:establishment', CocinaController.getCategorys);
 router.get('/getPlatos/:establishment,:category', CocinaController.getPlatos);
 router.get('/getAllPlatos/:establishment', CocinaController.getAllPlatos);
 
+router.delete('/deletePlato/:id', CocinaController.deletePlato);
 
 router.post('/registerPlato', CocinaController.registerPlato);
 router.post('/registerCategory', CocinaController.registerCategory);

@@ -54,7 +54,7 @@
     padding-top: 15px;
 }
 
-.category-form input {
+.category-form .category-input {
     width: 100%;
     color: #B0B0B0;
     font-size: 28px;
@@ -127,8 +127,8 @@ padding: 10px;
     background-color: none;
     padding-left: 15px;
     margin-top: 10px;
-    /* display: flex; */
 }
+
 .cont-platos .plato-name {
     color: #B0B0B0;
     float: left;
@@ -137,10 +137,66 @@ padding: 10px;
 
 .cont-platos .plato-value {
     color: #B0B0B0;
-    float: right;
-    margin-right: 10px;
 }
 
 
+.cont-platos .cont-btn-delete a button {
+    border-radius: 50%;
+    width: 26px;
+    text-decoration: none;
+    background: #E87B13;
+    border: none;
+    border-bottom: 2px  2px 2px 2px solid #E87B13;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+
+
+/* input */
+
+
+
+.cont-input {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.cont-input .input-precio {
+    margin: 10px;
+    font-size: 22px;
+    color: #B0B0B0;
+    border: none;
+    background: none;
+    outline: 0px;
+    text-align: center;
+    border: 1px solid #E87B13;
+}
+
+.cont-input .input-name-plato {
+    margin: 10px;
+    font-size: 22px;
+    color: #B0B0B0;
+    border: none;
+    background: none;
+    outline: 0px;
+    text-align: center;
+    border: 1px solid #E87B13;
+    
+}
+
+.cont-input .input-plato {
+    margin: 10px;
+    font-size: 22px;
+    color: #B0B0B0;
+    border: none;
+    background: none;
+    outline: 0px;
+    text-align: center;
+    border: 1px solid #E87B13;
+    border-radius: 2px;
+    
+}
 
 
