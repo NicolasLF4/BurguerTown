@@ -62,6 +62,13 @@ import { Local } from '../models/local.model';
     ));
   }
 
+  deletePlato(id: string) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.delete(this.url + "/deletePlato/" + id, { headers: headers }).pipe(map(
+      resp => { return resp; }
+    ));
+  }
+
 
 
 }

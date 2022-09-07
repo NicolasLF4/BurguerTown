@@ -75,6 +75,8 @@ var controller = {
         }
     },
 
+    
+
     /* Registracion de YOUTUBE */
     registerPlato: function(req, res) {
         var savePlato = new Plato();
@@ -113,17 +115,18 @@ var controller = {
         let nameCategory = params.name;
         let establishmentName = params.establishment;
 
-        saveCategory.findOne({ name: nameCategory }, (error, category) => {
+        saveCategory.name = params.name;
+        saveCategory.establishment = params.establishment;
+
+        Category.findOne({ name: nameCategory }, (error, category) => {
             if (error) {
-                console.log(error)
+                console.log('1');
             } else {
-                if (params.name == "" || !category) {
-                    console.log(category);
+                if (params.name == "" || category) {
+                    console.log('2');
                     res.status(401).send('invalid category')
                 } else {
                     
-                    saveCategory.name = params.name;
-                    saveCategory.establishment = params.establishment;
 
                     saveCategory.save((err, categoryStored) => {
 
@@ -207,8 +210,24 @@ var controller = {
 
     },
 
+    deletePlato: function(req, res) {
+        var platoId = req.params.id;
 
-  
+        Plato.findByIdAndRemove(platoId, (err, platoEliminado) => {
+            if (err) return res.status(500).send({
+                message: 'No se ha podido borrar la persona'
+            });
+
+            if (!platoEliminado) return res.status(404).send({
+                message: 'No se puede eliminar persona'
+            });
+
+            return res.status(200).send({
+                eliminado: platoEliminado
+            });
+        });
+    },
+
    
 
 

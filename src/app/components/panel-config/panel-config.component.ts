@@ -29,10 +29,12 @@ export class PanelConfigComponent implements OnInit {
     this.formCategory = new FormGroup({
      name: new FormControl( '', [Validators.required, Validators.minLength(3)])
     }), 
+    
     this.formPlato = new FormGroup({
-      name: new FormControl( '', [Validators.required, Validators.minLength(3)]
-      ),
-      precio: new FormControl('', Validators.required)
+      name: new FormControl( '', [Validators.required, Validators.minLength(3)]),
+      precio: new FormControl('', Validators.required),
+      numberPerson: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
      })
   }
 
@@ -48,10 +50,10 @@ export class PanelConfigComponent implements OnInit {
   sendPlato(categoryForm: any){
     var plato = { 
          precio: this.formPlato.value.precio,
-         description: 'description',
+         description: this.formPlato.value.description,
          image: 'imagen',
          name: this.formPlato.value.name,
-         numberPerson: '112727384', //cantidad de personas que comen
+         numberPerson: this.formPlato.value.numberPerson, //cantidad de personas que comen
          category: categoryForm,
          establishment: 'golden' //Nombre complet 
         };
@@ -79,7 +81,7 @@ export class PanelConfigComponent implements OnInit {
     }
     },err =>{
       console.log(err);
-    })
+    });
   }
 
 
@@ -101,11 +103,9 @@ export class PanelConfigComponent implements OnInit {
         console.log('soy plato');
         this.platosPerCategory = res.platos;
         console.log(res);
-        
-     
-        
+            
       }
-    })
+    });
   }
 
   getAllPlatos(){
@@ -114,11 +114,18 @@ export class PanelConfigComponent implements OnInit {
 
       console.log(res);
 
-    })
+    });
   }
 
   showModalCategory(idCategory: string){
     $('#'+idCategory).modal('show');
+  }
+
+  platoDelete(idEliminar: string){
+  this._burgerService.deletePlato(idEliminar).subscribe((res:any)=>{
+    console.log(res);
+    this.getAllPlatos(); 
+  });
   }
 
 }

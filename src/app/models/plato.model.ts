@@ -6,8 +6,6 @@ export class Plato {
         public name: String,
         public numberPerson: String, //cantidad de personas que comen
         public category: String,
-        public establishment: String //Nombre completo
-
-        
+        public establishment: String //Nombre completo    
     ){}
 }

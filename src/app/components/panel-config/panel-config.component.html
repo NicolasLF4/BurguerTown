@@ -14,7 +14,7 @@
       <a class="btn-agreg-plato"><button (click)="showModalCategory(data._id)" ><i class="fa-solid fa-plus fa-2xs"></i></button></a>
     </div>
   </div>
-  
+
 
 
   <!-- modal plato -->
@@ -22,33 +22,53 @@
     <div class="modal-dialog">
 
       <div class="modal-content modal-color">
-        <div class="modal-header">
+        <!-- <div class="modal-header">
           <h5 class="modal-title">Agregar categoria</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
+        </div> -->
+        <div class="container modal-body">
+          <div class="cont-header">
+            <div class="cont-img"></div>
+          </div>
+          <form  [formGroup]="formPlato">
 
-          <form class="category-form row" [formGroup]="formPlato">
-
-            <input class="col-6" type="text" placeholder="Nombre del Plato" formControlName="name">
-            <input  class="col-6" type="text" placeholder="Precio" formControlName="precio">
-
-            <div class="modal-footer">             
-              <button  class="btn btn-primary" (click)="sendPlato(data.name)">{{data.name}}</button>
+            <div class="col-12 form-row">
+              <div class="cont-input">
+                <input class="col-5 input-name-plato" type="text" placeholder="Nombre del Plato" formControlName="name">
+              </div>
+            <div class="cont-input">
+              <input class="col-5 input-precio" type="text" placeholder="Precio" formControlName="precio">          
+            </div>
+            <div class="cont-input">
+              <input class="col-4 input-plato" type="text" placeholder="Porcion para cuantos" formControlName="numberPerson">
+            </div>
+            </div>
+            <div class="cont-input">
+              <input class="col-6 input-plato" type="text" placeholder="Descripcion" formControlName="description">
+            </div>
+            <div class="cont-btn-save">             
+              <button  class="btn btn-primary" (click)="sendPlato(data.name)">Guardar</button>
             </div>
           </form>
 
         </div>
-    </div> 
+      </div> 
     </div>
   </div>
 
   <!-- platos -->
     <div *ngFor="let dat of platosPerCategory"> 
       <div class="cont-platos row" *ngIf="dat.category == data.name">    
-        <div class="w-100">
-          <p class="plato-name">{{dat.name}}</p>
-          <p class="plato-value">${{dat.precio}}</p>
+        <div class="w-100 d-flex justify-content-center">
+
+          <div class="float-lg-start">
+            <span class="plato-name">{{dat.name}}</span>
+          </div>
+
+          <div class="cont-btn-delete d-flex w-100 justify-content-end">
+            <span class="plato-value">${{dat.precio}}</span>
+            <a><button (click)="platoDelete(dat._id)">-</button></a>
+          </div>
         </div>   
       </div>
     </div>
@@ -78,8 +98,7 @@
             <div class="modal-body">
 
               <form class="category-form" [formGroup]="formCategory">
-                <input type="text" placeholder="Categoria" formControlName="name">
-
+                <input class="category-input" type="text" placeholder="Categoria" formControlName="name">
                 <div class="modal-footer">             
                   <button  class="btn btn-primary" (click)="sendCategory()" [disabled]="formCategory.invalid">guardar</button>
                 </div>
