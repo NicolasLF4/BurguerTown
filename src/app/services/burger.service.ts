@@ -40,14 +40,14 @@ import { Local } from '../models/local.model';
     ));
   }
 
-  getCategorys(establishment: string ) {
+  getCategorys(establishment: String, type?: String ) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get(this.url + "/getCategorys/" + establishment, { headers: headers }).pipe(map(
+    return this.http.get(this.url + "/getCategorys/" + establishment + ',' + type, { headers: headers }).pipe(map(
       resp => { return resp; }
     ));
   }
 
-  getPlatos( establishment: string, category: string ) {
+  getPlatos( establishment: String, category: String ) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(this.url + "/getPlatos/" + establishment + ',' + category , { headers: headers }).pipe(map(
       resp => { return resp; }
@@ -55,7 +55,7 @@ import { Local } from '../models/local.model';
   }
 
 
-  getAllPlatos(establishment: string){
+  getAllPlatos(establishment: String){
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(this.url + "/getAllPlatos/" + establishment, { headers: headers }).pipe(map(
       resp => { return resp; }

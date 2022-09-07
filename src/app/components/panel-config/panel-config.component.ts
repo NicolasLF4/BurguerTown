@@ -71,10 +71,7 @@ export class PanelConfigComponent implements OnInit {
    
   
   sendCategory(){
-    var category = {
-      establishment:'golden',
-      name: this.formCategory.value.name
-    };
+    var category = new Category('golden',this.formCategory.value.name, 'eat');
     this._burgerService.registerCategory(category).subscribe((res:any)=>{
       if(res){ console.log('backend category joya');
       this.getCategorys(); 

@@ -1,1 +1,8 @@
-<p>Menu works!</p>
+<div class="cont-select-category">
+    <div *ngFor="let dato of contCategorys">
+        <a *ngIf="typeView == dato.type" (click)="selectionCategory(dato.name)">
+            {{dato.name}}
+        </a>
+    </div>
+
+</div>

@@ -41,7 +41,7 @@ var upload = multer({ dest: 'uploads/' }, storage);
 var router = express.Router();
 
 router.get('/test', CocinaController.test);
-router.get('/getCategorys/:establishment', CocinaController.getCategorys);
+router.get('/getCategorys/:establishment,:type?', CocinaController.getCategorys);
 router.get('/getPlatos/:establishment,:category', CocinaController.getPlatos);
 router.get('/getAllPlatos/:establishment', CocinaController.getAllPlatos);
 
