@@ -73,7 +73,7 @@ export class PanelConfigComponent implements OnInit {
    
   
   sendCategory(){
-    var category = new Category('golden',this.formCategory.value.name, 'eat');
+    var category = new Category(this.formCategory.value.name,'golden', 'eat');
     this._burgerService.registerCategory(category).subscribe((res:any)=>{
       if(res){ console.log('backend category joya');
       this.getCategorys(); 
@@ -89,8 +89,8 @@ export class PanelConfigComponent implements OnInit {
   getCategorys(){
     this._burgerService.getCategorys('golden').subscribe((res: any)=>{
       if(res){
-        this.allCategorys = res.categorys;
-        console.log(this.allCategorys);
+        console.log(res);
+        this.allCategorys = res;
          
         this.getAllPlatos();
       }

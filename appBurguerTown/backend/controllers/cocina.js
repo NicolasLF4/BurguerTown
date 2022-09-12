@@ -117,6 +117,7 @@ var controller = {
 
         saveCategory.name = params.name;
         saveCategory.establishment = params.establishment;
+        saveCategory.type = params.type;
 
         Category.findOne({ name: nameCategory }, (error, category) => {
             if (error) {
@@ -158,9 +159,11 @@ var controller = {
             Category.find({ establishment: establishmentvar }).sort().exec((err, categorys) => {
                 if (err) return res.status(500).send({message: 'Error al devolver los datos.'});
                 if (!categorys) return res.status(404).send({message: 'No hay categorias para mostrar'});
+                console.log(categorys);
                 return res.status(200).send(categorys);
             });
         }else{
+            console.log('tiene type');
             Category.find({ establishment: establishmentvar, type: typevar }).sort().exec((err, categorys) => {
                 if (err) return res.status(500).send({message: 'Error al devolver los datos.'});
                 if (!categorys) return res.status(404).send({message: 'No hay categorias para mostrar'});

@@ -1,8 +1,21 @@
-<div class="cont-select-category">
+<div class="cont-select-menu" *ngIf="!stepMenu">
     <div *ngFor="let dato of contCategorys">
         <a *ngIf="typeView == dato.type" (click)="selectionCategory(dato.name)">
             {{dato.name}}
         </a>
     </div>
+</div>
 
+<div class="cont-select-menu" *ngIf="stepMenu">
+    <div *ngFor="let dato of contMenu">
+        <p>{{dato.name}}</p>
+        <p>{{dato.cant}}</p>
+        <a (click)="addPlato(dato)">mas</a>
+        <br><br>
+        <a (click)="deletePlato(dato)">menos</a>
+    </div>
+</div>
+
+<div>
+    <a (click)="toggleTypeFood()">SOY TOGGLE</a>
 </div>
