@@ -7,6 +7,5 @@ export class Pedido {
         public estado: String,
         public precio: Number,
         public establishment: String //Nombre completo
-        
     ){}
 }

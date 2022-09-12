@@ -117,6 +117,7 @@ var controller = {
 
         saveCategory.name = params.name;
         saveCategory.establishment = params.establishment;
+        saveCategory.type = params.type;
 
         Category.findOne({ name: nameCategory }, (error, category) => {
             if (error) {
@@ -152,20 +153,24 @@ var controller = {
 
     getCategorys: function(req, res) {
         var establishmentvar = req.params.establishment;
-        Category.find({ establishment: establishmentvar }).sort().exec((err, categorys) => {
+        var typevar = req.params.type;
 
-            if (err) return res.status(500).send({
-                message: 'Error al devolver los datos.'
+        if(typevar == 'undefined'){
+            Category.find({ establishment: establishmentvar }).sort().exec((err, categorys) => {
+                if (err) return res.status(500).send({message: 'Error al devolver los datos.'});
+                if (!categorys) return res.status(404).send({message: 'No hay categorias para mostrar'});
+                console.log(categorys);
+                return res.status(200).send(categorys);
             });
-
-            if (!categorys) return res.status(404).send({
-                message: 'No hay categorias para mostrar'
+        }else{
+            console.log('tiene type');
+            Category.find({ establishment: establishmentvar, type: typevar }).sort().exec((err, categorys) => {
+                if (err) return res.status(500).send({message: 'Error al devolver los datos.'});
+                if (!categorys) return res.status(404).send({message: 'No hay categorias para mostrar'});
+                return res.status(200).send(categorys);
             });
-
-            return res.status(200).send({
-                categorys
-            });
-        });
+        }
+        
 
     },
 
@@ -250,19 +255,15 @@ var controller = {
     /* Login youtube */
     login: function(req, res) {
         let userData = req.body
-        console.log(userData);
         User.findOne({ mail: userData.mailAccess }, (error, user) => {
             if (error) {
                 console.log(error)
             } else {
                 if (userData.mailAccess == "" || !user) {
-                    console.log(user);
                     res.status(401).send('Invalid email')
                 } else if (user.password !== userData.password) {
-                    console.log("Contra mal");
                     res.status(401).send('Invalid password')
                 } else {
-                    console.log("Estoy en el final de todo");
                     let payload = { subject: user._id }
                     let token = jwt.sign(payload, 'secretKey')
                     res.status(200).send({ token, user })
