@@ -213,15 +213,33 @@ var controller = {
 
         Plato.findByIdAndRemove(platoId, (err, platoEliminado) => {
             if (err) return res.status(500).send({
-                message: 'No se ha podido borrar la persona'
+                message: 'No se ha podido borrar el plato'
             });
 
             if (!platoEliminado) return res.status(404).send({
-                message: 'No se puede eliminar persona'
+                message: 'No se puede eliminar el plato'
             });
 
             return res.status(200).send({
                 eliminado: platoEliminado
+            });
+        });
+    },
+
+    deleteCategory: function(req, res) {
+        var categoryId = req.params.id;
+
+        Category.findByIdAndRemove(categoryId, (err, categoriaEliminada) => {
+            if (err) return res.status(500).send({
+                message: 'No se ha podido borrar la categoria'
+            });
+
+            if (!categoriaEliminada) return res.status(404).send({
+                message: 'No se puede eliminar persona'
+            });
+
+            return res.status(200).send({
+                eliminado: categoriaEliminada
             });
         });
     },

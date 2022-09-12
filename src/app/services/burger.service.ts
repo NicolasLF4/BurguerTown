@@ -5,6 +5,7 @@ import { Plato } from '../models/plato.model';
 import { Global } from 'src/app/services/global';
 import { Category } from '../models/category.model';
 import { Local } from '../models/local.model';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -69,6 +70,54 @@ import { Local } from '../models/local.model';
     ));
   }
 
+  deleteCategory(id: string) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.delete(this.url + "/deleteCategory/" + id, { headers: headers }).pipe(map(
+      resp => { return resp; }
+    ));
+  }
+
+  toastSuccess(text: any){
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      icon: 'success',
+      title: text,
+      background: '#E87B13',
+      color: '#242424'
+    });
+  }
+
+  // toastWarning(text, warning){
+
+  //   Swal.fire({
+  //     toast: true,
+  //     position: 'top-end',
+  //     showConfirmButton: false,
+  //     timer: 3000,
+  //     timerProgressBar: true,
+  //     title: text,
+  //     text: warning,
+  //     icon: 'warning'
+  //   })
+  // }
+
+  toastWarningConfirm(text: string, warning: string, confirm: string){
+    Swal.fire({
+      title: text,
+      text: warning,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: confirm,
+      background: '#242424',
+      color: '#E87B13'
+    })
+  }
 
 
 }

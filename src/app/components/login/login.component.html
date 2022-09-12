@@ -1,38 +1,41 @@
-<div class="color-bg">
+
+<div class=" cont-all">
+    <div classs="cont-sidebar"></div>
+</div>
+
+<div class="color-bg justify-content-center align-items-center">
     <br>
 
-
+   
     <!-- DESKTOP -->
-    <a [routerLink]="['/']">
+    <!-- <a [routerLink]="['/']">
         <div class="cont-top-desktop">
             <img class="logo-desktop" src="../../../assets/img/720LogoySloganDegradado.png" alt="">
         </div>
-    </a>
-    <div class="bg"></div>
+    </a> -->
+    <!-- <div class="bg"></div> -->
 
-
-    <div class="container box-log" id="center">
-        <div class="row">
-            <form action="">
-                <div class="form-group">
-                    <input type="email" class="form-control border-mail" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="E-MAIL" [(ngModel)]="loginUserData.mailAccess" name="mailAccess" required>
+    <div class="container box-log justify-content-center align-items-center" id="center">
+        <div class="row  d-flex justify-content-center align-items-center cont-login">
+            <form  class="cont-tarjet-category col-6" action="">
+                <div class="title-login">
+                    <h4 class="login-text">Login</h4>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <input type="email" class="  input-default mb-3" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="E-MAIL" [(ngModel)]="loginUserData.mailAccess" name="mailAccess" required>
                 </div>
                 <!-- form-group -->
-                <div class="form-group">
-                    <input type="password" class="form-control border-mail" placeholder="CONTRASEÑA" [(ngModel)]="loginUserData.password" name="password" required>
+                <div class="form-group d-flex justify-content-center">
+                    <input type="password" class="  input-default mb-4" placeholder="CONTRASEÑA" [(ngModel)]="loginUserData.password" name="password" required>
                 </div>
                 <!-- form-group -->
-                <div class="div bot-log">
-                    <button type="submit" class="btn btn-login" (click)="loginUser()">INICIAR SESIÓN</button>
+                <div class="div bot-log d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-login mb-3" (click)="loginUser()">INICIAR SESIÓN</button>
                 </div>
             </form>
 
         </div>
     </div>
-
-
-
-  
 
 
 </div>

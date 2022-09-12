@@ -5,6 +5,7 @@ import { Category } from 'src/app/models/category.model';
 
 import { Plato } from 'src/app/models/plato.model';
 import { BurgerService } from 'src/app/services/burger.service';
+import Swal from 'sweetalert2';
 
 
 declare var $:any;
@@ -57,12 +58,13 @@ export class PanelConfigComponent implements OnInit {
          category: categoryForm,
          establishment: 'golden' //Nombre complet 
         };
-        console.log(plato)
+    console.log(plato)
     this._burgerService.registerPlato(plato).subscribe((res:any)=>{
       if(res){
         console.log('backend joya');
         this.formPlato.reset();
         this.getAllPlatos();
+        this._burgerService.toastSuccess('Se agregó el plato');
 
       }
     },err =>{
@@ -81,6 +83,7 @@ export class PanelConfigComponent implements OnInit {
       if(res){ console.log('backend category joya');
       this.getCategorys(); 
       this.formCategory.reset();
+      this._burgerService.toastSuccess('Se agrego la categoria!');
     }
     },err =>{
       console.log(err);
@@ -128,7 +131,30 @@ export class PanelConfigComponent implements OnInit {
   this._burgerService.deletePlato(idEliminar).subscribe((res:any)=>{
     console.log(res);
     this.getAllPlatos(); 
+    this._burgerService.toastSuccess('Se eliminó el plato.');
   });
   }
+
+  categoryDelete(idEliminarCat: string){
+    this._burgerService.toastWarningConfirm('Eliminar Categoria', "¿Está seguro que desea borrar la categoria?", 'Borrar');
+    Swal.fire({
+      title: 'Eliminar Categoria',
+      text: "¿Está seguro que desea borrar la categoria?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+      background:'#242424',
+      color: '#E87B13'
+    }).then((result) => {
+      if (result.value) {
+      this._burgerService.deleteCategory(idEliminarCat).subscribe((res:any)=>{
+      this.getCategorys();
+      this._burgerService.toastSuccess('Se eliminó la categoria.');
+
+    });
+  }
+  })}
 
 }

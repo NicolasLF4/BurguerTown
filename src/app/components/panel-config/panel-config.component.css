@@ -32,171 +32,35 @@
     box-shadow: 0 0 6px #E87B13;
 }
 
-.modal-color {
-    background: #242424;
+
+
+.cont-btn-delete-category {
+    right: 2%;
+    top: -7%;
 }
 
-.btn-primary {
-    background: #E87B13 !important;
-    border: none;
+.btn-delete-redondo {
+    padding: 3px 6px 3px 6px;
+    background: #E87B13;
+    color: #242424;
+    border-bottom: 2px  2px 2px 2px solid #E87B13;
+    transition:all 0.2s ease;
 }
 
-.btn-primary:hover {
-    box-shadow: 0 0 6px #E87B13;
-}
-
-.modal-title {
-    color: #B0B0B0;
-}
-
-.category-form {
-    width: 100%;
-    padding-top: 15px;
-}
-
-.category-form .category-input {
-    width: 100%;
-    color: #B0B0B0;
-    font-size: 28px;
-    border: none;
-    background: none;
-    outline: 0px;
-    padding: 8px;
-    /* border-bottom: 1px solid #E87B13; */
-    
-}
-
-.cont-category {
-    background: none;
-    /* border-radius: ; */
-    
-}
-
-.cont-category .cont-header-category {
-    display: flex ;
-    background-color: black;
-    padding: 10px;
-}
-
-.cont-header-category .cont-title {
-    float: left;
-}
-
-.cont-header-category h3 {
-    font-size: 32px;
-    font-family: 'Roboto';
-    font-weight: 200;
+.btn-delete-redondo:hover{
+    background: #000;
     color: #E87B13;
-    
 }
 
-.cont-header-category  {
-/* display: inline-block; */
-padding: 10px;
-
-}
-
-.cont-btn {
-   width: 100%;
-   align-items: center;
-   text-align: center;
-}
-
-
-.cont-btn .btn-agreg-plato {
-    
-    text-decoration: none;
-    float: right;
-}
-
-.cont-btn .btn-agreg-plato button {
+.btn-redondo {
     border-radius: 50%;
-    width: 30px;
-    margin-top: 10px;
     text-decoration: none;
-    background: #E87B13;
-    border-bottom: 2px  2px 2px 2px solid #E87B13;
-}
-
-.cont-btn .btn-agreg-plato button:hover {
-    box-shadow: 0 0 6px #E87B13;
-}
-
-.cont-platos {
-    width: 100%;
-    background-color: none;
-    padding-left: 15px;
-    margin-top: 10px;
-}
-
-.cont-platos .plato-name {
-    color: #B0B0B0;
-    float: left;
-    
-}
-
-.cont-platos .plato-value {
-    color: #B0B0B0;
-}
-
-
-.cont-platos .cont-btn-delete a button {
-    border-radius: 50%;
-    width: 26px;
-    text-decoration: none;
-    background: #E87B13;
-    border: none;
-    border-bottom: 2px  2px 2px 2px solid #E87B13;
-    display: inline-block;
-    margin-left: 10px;
 }
 
 
 
-/* input */
 
 
 
-.cont-input {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-}
-
-.cont-input .input-precio {
-    margin: 10px;
-    font-size: 22px;
-    color: #B0B0B0;
-    border: none;
-    background: none;
-    outline: 0px;
-    text-align: center;
-    border: 1px solid #E87B13;
-}
-
-.cont-input .input-name-plato {
-    margin: 10px;
-    font-size: 22px;
-    color: #B0B0B0;
-    border: none;
-    background: none;
-    outline: 0px;
-    text-align: center;
-    border: 1px solid #E87B13;
-    
-}
-
-.cont-input .input-plato {
-    margin: 10px;
-    font-size: 22px;
-    color: #B0B0B0;
-    border: none;
-    background: none;
-    outline: 0px;
-    text-align: center;
-    border: 1px solid #E87B13;
-    border-radius: 2px;
-    
-}
 
 

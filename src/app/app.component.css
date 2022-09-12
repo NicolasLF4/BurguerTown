@@ -7,3 +7,161 @@
     width: calc(100%-270px);
 }
 
+.btn-primary {
+    background: #E87B13 !important;
+    border: none;
+    padding: 6px 12px 6px 12px;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 6px #E87B13;
+}
+
+.modal-title {
+    color: #B0B0B0;
+}
+
+.cont-title-section {
+   width: 100%;
+}
+
+.title-section {
+    color: #B0B0B0;
+    font-size: 4rem;
+    font-weight: 200;
+    padding-bottom: 16px;
+}
+
+.category-form {
+    width: 100%;
+    padding-top: 15px;
+}
+
+.category-form .category-input {
+    width: 100%;
+    color: #B0B0B0;
+    font-size: 28px;
+    border: none;
+    background: none;
+    outline: 0px;
+    padding: 8px;
+    /* border-bottom: 1px solid #E87B13; */
+    
+}
+.cont-tarjet-category {
+    background: radial-gradient(221.28% 221.28% at 141.39% -69.89%, rgb(232 123 19 / 0%) 0%, rgb(232 123 19 / 5%) 35.42%, rgb(232 123 19 / 0%) 77.08%, rgb(232 123 19 / 11%) 100%) ,
+    linear-gradient(202deg, #e87b132e -4.61%, rgba(232, 123, 19, 0) 36.46%, rgba(232, 123, 19, 0) 88.22%, #e87b1361 117.29%);
+    border-radius: 5px;
+}
+
+.cont-category .cont-header-category {
+    display: flex ;
+    background-color: none;
+    padding: 10px;
+}
+
+.cont-header-category .cont-title {
+    float: left;
+}
+
+.cont-header-category h3 {
+    font-size: 32px;
+    font-family: 'Roboto';
+    font-weight: 200;
+    color: #E87B13;
+    
+}
+
+.cont-header-category  {
+/* display: inline-block; */
+padding: 8px;
+
+}
+
+.cont-btn {
+   width: 100%;
+   align-items: center;
+   text-align: center;
+}
+
+
+.cont-btn .btn-agreg-plato {
+    
+    text-decoration: none;
+    float: right;
+}
+
+.cont-btn .btn-agreg-plato {
+    border-radius: 50%;
+    /* padding: 5px 6px 5px 6px; */
+    margin-top: 10px;
+    text-decoration: none;
+    background: #E87B13;
+    color: #242424;
+    border-bottom: 2px  2px 2px 2px solid #E87B13;
+    
+}
+
+
+.cont-body {
+    width: 100%;
+    background-color: none;
+    padding-left: 15px;
+}
+
+.cont-platos {
+    overflow: auto;
+    max-height: 110px;
+}
+
+.cont-platos::-webkit-scrollbar {
+    width: 6px;
+    background: none;
+}
+.cont-platos::-webkit-scrollbar-thumb {
+    background: #E87B13;
+    border-radius: 4px;
+}
+
+.plato-font {
+    color: #B0B0B0;
+    font-size: 24px;
+    font-weight: 200;
+    
+}
+
+
+.cont-btn-delete .btn-delete {
+    padding: 0px 5px 0px 5px;
+    text-decoration: none;
+    background: none;
+    color: red;
+    border-bottom: 2px  2px 2px 2px solid #E87B13;
+    padding-top: 6px;
+}
+
+
+
+/* input */
+
+.cont-input {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+
+.input-default {
+    font-size: 26px;
+    color: #B0B0B0;
+    background: none;
+    border: none;
+    outline: 0px;
+    border-bottom: 1px solid #E87B13;
+}
+
+.cont-btn-save{
+    align-items: center;
+    text-align: center;
+    margin-top: 26px;
+}
