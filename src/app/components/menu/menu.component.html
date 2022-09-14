@@ -5,17 +5,20 @@
         </a>
     </div>
 </div>
-
-<div class="cont-select-menu" *ngIf="stepMenu">
-    <div *ngFor="let dato of contMenu">
-        <p>{{dato.name}}</p>
-        <p>{{dato.cant}}</p>
-        <a (click)="addPlato(dato)">mas</a>
-        <br><br>
-        <a (click)="deletePlato(dato)">menos</a>
+<div class="bg-default">
+<div class="cont-select-menu row bg-default" *ngIf="stepMenu">
+    <div class="card col-4" *ngFor="let dato of contMenu">
+        <div class="card-body">
+            <h5 class="card-title">{{dato.name}}</h5>
+            <p>{{dato.cant}}</p>
+            <a class="btn btn-primary" (click)="addPlato(dato)">mas</a>
+            <br><br>
+            <a class="btn btn-primary" (click)="deletePlato(dato)">menos</a>
+        </div>
     </div>
+</div>
 </div>
 
 <div>
-    <a (click)="toggleTypeFood()">SOY TOGGLE</a>
+    <a class="btn-default" (click)="toggleTypeFood()">SOY TOGGLE</a>
 </div>

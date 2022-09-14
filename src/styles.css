@@ -24,7 +24,7 @@ body {
 }
 
 .bg-default{
-    background: #242424;
+    background: #242424 !important;
 }
 
 .border-radius {

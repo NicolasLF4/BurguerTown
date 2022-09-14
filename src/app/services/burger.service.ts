@@ -91,20 +91,6 @@ import Swal from 'sweetalert2';
     });
   }
 
-  // toastWarning(text, warning){
-
-  //   Swal.fire({
-  //     toast: true,
-  //     position: 'top-end',
-  //     showConfirmButton: false,
-  //     timer: 3000,
-  //     timerProgressBar: true,
-  //     title: text,
-  //     text: warning,
-  //     icon: 'warning'
-  //   })
-  // }
-
   toastWarningConfirm(text: string, warning: string, confirm: string){
     Swal.fire({
       title: text,
@@ -117,6 +103,10 @@ import Swal from 'sweetalert2';
       background: '#242424',
       color: '#E87B13'
     })
+  }
+
+  saveStorage(){
+    localStorage.setItem('','');
   }
 
 
