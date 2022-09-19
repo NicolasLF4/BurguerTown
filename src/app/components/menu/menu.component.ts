@@ -14,7 +14,6 @@ export class MenuComponent implements OnInit {
   public contCategorys: Category[] = [];
   public contMenu: ItemMenu[] = [];
   public stepMenu: Boolean = false; // Arrancan mostrando las categorias
-  public cache:any;
 
   constructor(private _burgerService: BurgerService) {
     this.typeView = 'eat'; // drink
@@ -41,45 +40,48 @@ export class MenuComponent implements OnInit {
   }
 
   makeItemMenu(item: any, categoria:String){
+    // Set variable default
     this.contMenu = [];
-     this.cache = []; 
+    var cache = []; 
+    var storageValue = JSON.parse(localStorage.getItem('data'+this.typeView) || '[]');
 
-    var storageValue:any = JSON.parse(localStorage.getItem('data'+this.typeView)||'')  ||[];
-    console.log(storageValue)
     if (storageValue.length > 0) {
-      for (let i = 0; i < storageValue.length; i++) {
-        console.log(categoria);
-        if(categoria == storageValue[i].category){
-            this.cache.push(storageValue);
-            console.log(this.cache);
-        }
-      }
-      for (let i = 0; i < item.length; i++) {
-        console.log('for 1');
-        console.log(this.cache);
-        for (let j = 0; j < this.cache.length; j++) {
-          console.log('for 2')
-          console.log(item[i].name);
-          console.log(this.cache);
-
-          if(item[i].name == this.cache[j].name){
-            let contItemTemp = new ItemMenu(item[i].precio, item[i].description, item[i].image, item[i].name, item[i].numberPerson, item[i].category, this.cache[j].cant);
-            this.contMenu.push(contItemTemp);
-            console.log('1');
-            continue          
-          }  
-        }
-        let contItemTemp = new ItemMenu(item[i].precio, item[i].description, item[i].image, item[i].name, item[i].numberPerson, item[i].category, 0);
-        this.contMenu.push(contItemTemp);
-      }
-      
+      cache = this.setCachePlato(storageValue,categoria);
+      this.setMenuWhitCache(item, cache)
     }else{
       for (let i = 0; i < item.length; i++){            
         let contItemTemp = new ItemMenu(item[i].precio, item[i].description, item[i].image, item[i].name, item[i].numberPerson, item[i].category,0);
         this.contMenu.push(contItemTemp);
       }
     }
-    // console.log(item);    
+  }
+
+  setMenuWhitCache(item:any, cache: any){
+    for (let i = 0; i < item.length; i++) {
+      var concidio = false;
+      for (let j = 0; j < cache.length; j++) {
+        if(item[i].name == cache[j].name){
+          let contItemTemp = new ItemMenu(item[i].precio, item[i].description, item[i].image, item[i].name, item[i].numberPerson, item[i].category, cache[j].cant);
+          this.contMenu.push(contItemTemp);
+          concidio = true;
+          continue;
+        }  
+      }
+      if(!concidio){
+        let contItemTemp = new ItemMenu(item[i].precio, item[i].description, item[i].image, item[i].name, item[i].numberPerson, item[i].category, 0);
+        this.contMenu.push(contItemTemp);
+      }
+    }
+  }
+
+  setCachePlato(storageValue:any, categoria:any){
+    let temp = [];
+    for (let i = 0; i < storageValue.length; i++) {
+      if(categoria == storageValue[i].category){
+          temp.push(storageValue[i]);
+      }
+    }
+    return temp;
   }
 
   checkStorage(categoria:any):any{
@@ -99,12 +101,12 @@ export class MenuComponent implements OnInit {
 
   addPlato(itemMenu:any){
     itemMenu.cant += 1;
-    console.log(this.contMenu);
-
+    this.evaluateQuantity();
   }
 
   deletePlato(itemMenu:any){
     itemMenu.cant -= 1;
+    this.evaluateQuantity();
   }
 
   toggleTypeFood(){
@@ -115,7 +117,6 @@ export class MenuComponent implements OnInit {
   }
 
   evaluateQuantity(){
-    console.log(this.contMenu);
     var contMenuTemp = [];
     for (let i = 0; i < this.contMenu.length; i++) {
       if (this.contMenu[i].cant > 0) {
@@ -123,8 +124,12 @@ export class MenuComponent implements OnInit {
         contMenuTemp.push(this.contMenu[i]);
       }   
     }
-    localStorage.setItem('data'+this.typeView, JSON.stringify(contMenuTemp));
-
+    if(!localStorage.getItem('data'+this.typeView)){
+      localStorage.removeItem('data'+this.typeView);
+      localStorage.setItem('data'+this.typeView, JSON.stringify(contMenuTemp));
+    }else{
+      localStorage.setItem('data'+this.typeView, JSON.stringify(contMenuTemp));
+    }
   }
   
 }
