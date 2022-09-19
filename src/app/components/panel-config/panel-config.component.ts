@@ -28,7 +28,8 @@ export class PanelConfigComponent implements OnInit {
   constructor(public _burgerService: BurgerService, public fb: FormBuilder) {
 
     this.formCategory = new FormGroup({
-     name: new FormControl( '', [Validators.required, Validators.minLength(3)])
+     name: new FormControl( '', [Validators.required, Validators.minLength(3)]),
+     type: new FormControl('')
     }), 
     
     this.formPlato = new FormGroup({
@@ -75,7 +76,7 @@ export class PanelConfigComponent implements OnInit {
    
   
   sendCategory(){
-    var category = new Category(this.formCategory.value.name,'golden', 'eat');
+    var category = new Category(this.formCategory.value.name,'golden', this.formCategory.value.type);
     this._burgerService.registerCategory(category).subscribe((res:any)=>{
       if(res){ console.log('backend category joya');
       this.getCategorys(); 

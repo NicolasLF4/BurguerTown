@@ -114,6 +114,7 @@ var controller = {
 
         let nameCategory = params.name;
         let establishmentName = params.establishment;
+        let typeCategory = params.type;
 
         saveCategory.name = params.name;
         saveCategory.establishment = params.establishment;

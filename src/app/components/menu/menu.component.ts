@@ -74,15 +74,12 @@ export class MenuComponent implements OnInit {
       }
       
     }else{
-      for (let i = 0; i < item.length; i++) {
-        
-        
+      for (let i = 0; i < item.length; i++){            
         let contItemTemp = new ItemMenu(item[i].precio, item[i].description, item[i].image, item[i].name, item[i].numberPerson, item[i].category,0);
         this.contMenu.push(contItemTemp);
       }
     }
-      // console.log(item);
-      
+    // console.log(item);    
   }
 
   checkStorage(categoria:any):any{

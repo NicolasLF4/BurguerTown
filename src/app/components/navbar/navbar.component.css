@@ -1,7 +1,4 @@
-* {
-    padding: 0;
-    margin: 0;
-}
+
 
 .cont-all {
     float: left;
@@ -11,22 +8,13 @@
     display: flex;
     align-items: center;
     border-right: 1.5px solid #E87B13;
-    width: 270px;
+    width: 262px;
    
    
 }
-
-.cont-sidebar {
-    border-left: orange 10px;
-    box-shadow: inset 0 0 5px #E87B13, 0 0 6px #E87B13;
-    
-}
-
-
-
 
 .nav-item {
-    padding: 4px 15px;
+    padding: 4px 12px;
     
 }
 .navLink {

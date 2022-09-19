@@ -1,3 +1,65 @@
 .cont-select-menu{
     background-color: aliceblue;
 }
+
+.label-cant{
+    margin-top:0;
+    margin-bottom: 0;
+    margin-left: 4px;
+    margin-right: 4px;
+    color: #FFFFFF;
+    
+
+}
+.precio-top{
+    color: #E87B13;
+
+}
+
+.item-title {
+font-size: 20px;
+font-weight: 400;
+line-height: 23px;
+letter-spacing: 0em;
+text-align: center;
+color: #F9F9F8;
+
+}
+
+.description{ 
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    color: #B0B0B0;
+}
+
+.cont-footer-tarjet{
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+
+
+.category{
+    text-decoration: none;
+    background: linear-gradient(239.62deg, #e87b1338 -13.09%, rgba(36, 36, 36, 0) 62.16%), linear-gradient(262.34deg, #e87b137a -74.28%, #242424 24.88%, #242424 92.43%, #9f5a19ad 122.09%);
+    border-radius: 8px;
+    margin: 8px;
+
+
+}
+
+.t-category{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px;
+    letter-spacing: 0em;
+    color: #F9F9F8;
+}
+
+
+.btn-text{
+    text-decoration: none;
+    color: #E87B13
+}

@@ -1,24 +1,49 @@
-<div class="cont-select-menu" *ngIf="!stepMenu">
-    <div *ngFor="let dato of contCategorys">
-        <a *ngIf="typeView == dato.type" (click)="selectionCategory(dato.name)">
-            {{dato.name}}
-        </a>
-    </div>
-</div>
-<div class="bg-default">
-<div class="cont-select-menu row bg-default" *ngIf="stepMenu">
-    <div class="card col-4" *ngFor="let dato of contMenu">
-        <div class="card-body">
-            <h5 class="card-title">{{dato.name}}</h5>
-            <p>{{dato.cant}}</p>
-            <a class="btn btn-primary" (click)="addPlato(dato)">mas</a>
-            <br><br>
-            <a class="btn btn-primary" (click)="deletePlato(dato)">menos</a>
+<div class="container">
+    <div class="cont-select-menu bg-default" *ngIf="!stepMenu">
+        <div *ngFor="let dato of contCategorys">
+          
+                <div class="row justify-content-center">
+                    <a *ngIf="typeView == dato.type" class="category col-6 row" (click)="selectionCategory(dato.name)">
+                        <div class="cont-img-category col-2">
+                            <img src="" class="img-category">
+                        </div>
+                        <div class="cont-text-category col-10">
+                            <h2 class="t-category">{{dato.name}}</h2>
+                            <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </a>
+                </div>
         </div>
     </div>
 </div>
+
+
+<div class="bg-default">
+    <div class="container">
+        <div class="row" *ngIf="stepMenu">
+            <div class="col-3" *ngFor="let dato of contMenu">
+                <div class="card cont-tarjet-category">
+                    <div class="precio-top d-flex justify-content-end m-1"><span>${{dato.precio}}</span></div>
+                    <div class="card-body align-items-center text-center">
+                        <div class="img-plato">
+                            <img src="" alt="">
+                        </div>
+                        <div class="cont-text-tarjet ">
+                            <h5 class="item-title">{{dato.name}}</h5>
+                            <p class="description">{{dato.description}}</p>
+                        </div>
+                        <div class="cont-footer-tarjet align-items-center d-flex justify-content-center">
+                            <a class="btn-redondo" (click)="addPlato(dato)"><i class="fa-sharp fa-solid fa-plus fa-xs"></i></a>
+                            <p class="label-cant">{{dato.cant}}</p>
+                            <a class="btn-redondo" (click)="deletePlato(dato)"><i class="fa-solid fa-minus fa-2xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div>
-    <a class="btn-default" (click)="toggleTypeFood()">SOY TOGGLE</a>
+<div class="text-center mt-4">
+    <a class="btn-text" (click)="toggleTypeFood()">Ir a las categorias...</a>
 </div>
