@@ -3,11 +3,11 @@
         <div *ngFor="let dato of contCategorys">
           
                 <div class="row justify-content-center">
-                    <a *ngIf="typeView == dato.type" class="category col-6 row" (click)="selectionCategory(dato.name)">
-                        <div class="cont-img-category col-2">
+                    <a *ngIf="typeView == dato.type" class="category col-lg-6 col-sm-12 row" (click)="selectionCategory(dato.name)">
+                        <div class="cont-img-category col-lg-2 col-6">
                             <img src="" class="img-category">
                         </div>
-                        <div class="cont-text-category col-10">
+                        <div class="cont-text-category col-lg-10 col-sm-6">
                             <h2 class="t-category">{{dato.name}}</h2>
                             <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                         </div>
@@ -21,8 +21,8 @@
 <div class="bg-default">
     <div class="container">
         <div class="row" *ngIf="stepMenu">
-            <div class="col-3" *ngFor="let dato of contMenu">
-                <div class="card cont-tarjet-category">
+            <div class="col-lg-3 col-6" *ngFor="let dato of contMenu">
+                <div class=" cont-tarjet-category">
                     <div class="precio-top d-flex justify-content-end m-1"><span>${{dato.precio}}</span></div>
                     <div class="card-body align-items-center text-center">
                         <div class="img-plato">
@@ -41,9 +41,36 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="text-center mt-4">
+                <a class="btn-text" (click)="toggleTypeFood()">Ir a las categorias...</a>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="phantom-space"></div>
+        </div>
+        
+         <div class="section-menu">
+                <div class="cont-nav-menu justify-content-center text-center">
+                    <a class="nav-menu"><i class="fa-solid fa-burger fa-xl"></i></a>
+                    <a class="nav-menu text-center"><i class="fa-solid fa-beer-mug-empty fa-xl"></i></a>
+                    <a class="nav-menu"><i class="fa-solid fa-burger fa-xl"></i></a>
+                </div>
+                <div class="section-footer-menu mt-4">
+                    <span class="t-size">Precio Total</span>
+                    <span>$</span>
+                    <div class="cont-btn-next m-3 text-center">
+                        <a class="btn-next"><span class="t-btn">Siguiente</span></a>
+                    </div>
+                </div>
+         </div>
     </div>
 </div>
 
-<div class="text-center mt-4">
-    <a class="btn-text" (click)="toggleTypeFood()">Ir a las categorias...</a>
-</div>
+
+
+
+
+
