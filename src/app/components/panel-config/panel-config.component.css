@@ -1,7 +1,7 @@
 .cont-config {
     background-color: #242424;
-    
-    height: 100vh;
+    max-height: 100vh;
+
 }
 
 .cont-btn-float {
@@ -35,8 +35,8 @@
 
 
 .cont-btn-delete-category {
-    right: 2%;
-    top: -7%;
+    right: 2px;
+    top: -10px;
 }
 
 .btn-delete-redondo {
@@ -55,6 +55,18 @@
 .btn-redondo {
     border-radius: 50%;
     text-decoration: none;
+}
+
+.category-select {  
+    width: 100%;
+    color: #B0B0B0;
+    font-size: 28px;
+    border: none;
+    background: none;
+    outline: 0px;
+    padding: 8px;
+    margin-bottom: 10px;
+    
 }
 
 

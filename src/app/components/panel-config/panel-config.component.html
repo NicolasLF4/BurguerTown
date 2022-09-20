@@ -1,4 +1,4 @@
-<div class="cont-width-calc">
+<div class="">
 
   <div class="cont-config  ">
     <div class="cont-title-section">
@@ -101,10 +101,14 @@
 
                   <form class="category-form" [formGroup]="formCategory">
                     <input class="category-input" type="text" placeholder="Categoria" formControlName="name">
-                    <div class="modal-footer">             
-                      <button  class="btn btn-primary" (click)="sendCategory()" [disabled]="formCategory.invalid">guardar</button>
-                    </div>
+                    <select class="form-select category-select" aria-label="Seleccionar" formControlName="type">
+                      <option value="eat">Comida</option>
+                      <option value="drink">Bebida</option>
+                    </select>
                   </form>
+                </div>
+                <div class="modal-footer">             
+                  <button  class="btn btn-primary" (click)="sendCategory()" [disabled]="formCategory.invalid">guardar</button>
                 </div>
           </div>      
       </div>

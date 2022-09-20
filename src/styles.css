@@ -4,24 +4,6 @@ body {
 }
 
 
-.cont-all {
-    float: left;
-    height: 100vh;
-    background-color: #242424;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    border-right: 1.5px solid #E87B13;
-    width: 270px;
-   
-   
-}
-
-.cont-sidebar {
-    border-left: orange 10px;
-    box-shadow: inset 0 0 5px #E87B13, 0 0 6px #E87B13;
-    
-}
 
 .bg-default{
     background: #242424 !important;
@@ -35,7 +17,8 @@ body {
 
 
 .cont-width-calc {
-    width: calc(100%-270px);
+    width: calc(100% - 262px) !important;
+    float: left;
 }
 
 .btn-primary {
@@ -207,3 +190,22 @@ padding: 8px;
     text-align: center;
     margin-top: 26px;
 }
+
+
+.btn-redondo {
+    text-align: center;
+    width: 18px;
+    line-height: 18px;
+    background: #E87B13;
+    color: #242424;
+    border-bottom: 2px 2px 2px 2px solid #E87B13;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+}
+
+.btn-redondo:hover{
+    background: #000;
+    color: #E87B13;
+}
+
+

@@ -51,7 +51,7 @@ export class MenuComponent implements OnInit {
       cache = this.setCachePlato(storageValue,categoria);
       this.setMenuWhitCache(item, cache)
     }else{
-      for (let i = 0; i < item.length; i++) {
+      for (let i = 0; i < item.length; i++){            
         let contItemTemp = new ItemMenu(item[i].precio, item[i].description, item[i].image, item[i].name, item[i].numberPerson, item[i].category,0);
         this.contMenu.push(contItemTemp);
       }
