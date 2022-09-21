@@ -93,6 +93,7 @@ export class MenuComponent implements OnInit {
       for (let i = 0; i < storageValue.length; i++) {
         if(categoria == storageValue.category){
             cacheMenu.push(storageValue);
+            console.log(cacheMenu);
         }
       }
       return cacheMenu;
@@ -131,5 +132,6 @@ export class MenuComponent implements OnInit {
       localStorage.setItem('data'+this.typeView, JSON.stringify(contMenuTemp));
     }
   }
+
   
 }

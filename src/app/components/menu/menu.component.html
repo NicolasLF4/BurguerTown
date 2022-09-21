@@ -1,4 +1,7 @@
 <div class="container">
+    <div class="row">
+        <a class="btn-text" data-bs-toggle="modal" data-bs-target="#modal-pedido"  >Ver Pedido</a>
+    </div>
     <div class="cont-select-menu bg-default" *ngIf="!stepMenu">
         <div *ngFor="let dato of contCategorys">
           
@@ -16,6 +19,35 @@
         </div>
     </div>
 </div>
+
+<!-- modal pedido -->
+
+
+<div class="modal" id="modal-pedido" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-1">
+        
+    <div class="modal-dialog">      
+          <!-- Contenido del modal -->
+
+        <div class="bg-default modal-content modal-color">
+              <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h3>Comidas</h3>
+                <div *ngFor="let data of contMenu">
+                    <div class="d-flex">
+                        <p class="label-cant">{{data.cant}}</p>
+                        <p class="label-cant">{{data.name}}</p>
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+             </div>
+        </div>      
+    </div>
+  </div>
+
 
 
 <div class="bg-default">
