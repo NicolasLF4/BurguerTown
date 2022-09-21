@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   public contCategorys: Category[] = [];
   public contMenu: ItemMenu[] = [];
   public stepMenu: Boolean = false; // Arrancan mostrando las categorias
+  public categoryNow: String = '';
 
   constructor(private _burgerService: BurgerService) {
     this.typeView = 'eat'; // drink
@@ -33,6 +34,7 @@ export class MenuComponent implements OnInit {
   selectionCategory(selection: String){
     this._burgerService.getPlatos('golden', selection.toLowerCase()).subscribe(( r:any ) => {
       if(r){
+        this.categoryNow = selection;
         this.stepMenu = true;
         this.makeItemMenu(r.platos,selection);
       }
@@ -43,7 +45,7 @@ export class MenuComponent implements OnInit {
     // Set variable default
     this.contMenu = [];
     var cache = []; 
-    var storageValue = JSON.parse(localStorage.getItem('data'+this.typeView) || '[]');
+    var storageValue = JSON.parse(localStorage.getItem('data'+this.categoryNow) || '[]');
 
     if (storageValue.length > 0) {
       cache = this.setCachePlato(storageValue,categoria);
@@ -85,7 +87,7 @@ export class MenuComponent implements OnInit {
   }
 
   checkStorage(categoria:any):any{
-    var storageValue:any = JSON.parse(localStorage.getItem('data'+this.typeView)||'')  ||[];
+    var storageValue:any = JSON.parse(localStorage.getItem('data'+this.categoryNow)||'')  ||[];
     console.log(storageValue)
 
     if (storageValue.length > 0) {
@@ -125,11 +127,11 @@ export class MenuComponent implements OnInit {
         contMenuTemp.push(this.contMenu[i]);
       }   
     }
-    if(!localStorage.getItem('data'+this.typeView)){
-      localStorage.removeItem('data'+this.typeView);
-      localStorage.setItem('data'+this.typeView, JSON.stringify(contMenuTemp));
+    if(!localStorage.getItem('data'+this.categoryNow)){
+      localStorage.removeItem('data'+this.categoryNow);
+      localStorage.setItem('data'+this.categoryNow, JSON.stringify(contMenuTemp));
     }else{
-      localStorage.setItem('data'+this.typeView, JSON.stringify(contMenuTemp));
+      localStorage.setItem('data'+this.categoryNow, JSON.stringify(contMenuTemp));
     }
   }
 
