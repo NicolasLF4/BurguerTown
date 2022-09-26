@@ -9,6 +9,7 @@ var Plato = require('../models/plato');
 var Category = require('../models/category');
 var Local = require('../models/local');
 var User = require('../models/user');
+var Pedido = require('../models/pedido')
 
 
 var controller = {
@@ -152,6 +153,35 @@ var controller = {
 
     },
 
+    registerTicket: function(req, res) {
+        var saveTicket = new Pedido();
+
+        var params = req.body;
+
+        saveTicket.tiempo = params.tiempo;
+        saveTicket.mesa = params.mesa;
+        saveTicket.pedidoComida = params.pedidoComida;
+        saveTicket.pedidoBebida = params.pedidoBebida;
+        saveTicket.estado = params.estado;
+        saveTicket.precio = params.precio;
+        saveTicket.establishment = params.establishment;
+
+        saveTicket.save((err, ticketStored) => {
+            if (err) return res.status(500).send({
+                message: 'Error al guardar el plato'
+            });
+
+            if (!ticketStored) return res.status(404).send({
+                message: 'No se ha podido guardar el plato'
+            });
+
+            return res.status(200).send({
+                pedido: ticketStored
+            })
+        });
+
+    },
+
     getCategorys: function(req, res) {
         var establishmentvar = req.params.establishment;
         var typevar = req.params.type;
@@ -213,6 +243,26 @@ var controller = {
         });
 
     },
+
+    getTicket: function(req, res) {
+        var establishmentvar = req.params.establishment;
+        Pedido.find({ establishment: establishmentvar }).sort().exec((err, pedidos) => {
+
+            if (err) return res.status(500).send({
+                message: 'Error al devolver los datos.'
+            });
+
+            if (!pedidos) return res.status(404).send({
+                message: 'No hay platos para mostrar'
+            });
+
+            return res.status(200).send({
+                pedidos
+            });
+        });
+
+    },
+
 
     deletePlato: function(req, res) {
         var platoId = req.params.id;

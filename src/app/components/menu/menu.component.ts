@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { Category } from 'src/app/models/category.model';
 import { ItemMenu } from 'src/app/models/itemMenu.model';
+import { Pedido } from 'src/app/models/pedido.model';
 import { BurgerService } from 'src/app/services/burger.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,10 @@ export class MenuComponent implements OnInit {
   public contMenu: ItemMenu[] = [];
   public stepMenu: Boolean = false; // Arrancan mostrando las categorias
   public categoryNow: String = '';
+  public contOrder:any = [];
+  public totalPrice:number = 0;
+  public orderEat:any = [];
+  public orderDrink:any = [];
 
   constructor(private _burgerService: BurgerService) {
     this.typeView = 'eat'; // drink
@@ -133,6 +139,75 @@ export class MenuComponent implements OnInit {
     }else{
       localStorage.setItem('data'+this.categoryNow, JSON.stringify(contMenuTemp));
     }
+  }
+
+  evaluateOrder(){
+    this._burgerService.getCategorys('golden').subscribe(( r:any ) =>{
+      let category = r;
+      var tempPushEat= [];
+      var tempPushDrink = [];
+      var tempPush = [];
+      for (let i = 0; i < category.length; i++) {
+        if (localStorage.getItem('data'+category[i].name)) {
+          if (category[i].type == 'eat') {
+            tempPushEat.push(JSON.parse(localStorage.getItem('data'+this.categoryNow)||''))            
+          }else{
+            tempPushDrink.push(JSON.parse(localStorage.getItem('data'+this.categoryNow)||''))
+          }
+          tempPush.push(JSON.parse(localStorage.getItem('data'+this.categoryNow)||''));
+          
+          console.log(tempPush[i]);         
+        }
+      }
+      this.calcTotalPrice(tempPush);
+
+      this.orderEat = tempPushEat;
+      this.orderDrink = tempPushDrink;
+      // this.contOrder = tempPush;
+      this.createTicket(tempPushEat, tempPushDrink);
+
+      this._burgerService.getTicket('golden').subscribe((res:any)=>{
+        console.log(res);
+      })
+    })
+  }
+
+  calcTotalPrice(temp:any){
+    console.log(temp);
+    var sum = 0;
+      for (let j = 0; j < temp.length; j++) {
+        for (let i = 0; i < temp[j].length; i++) {
+        //  console.log(temp[j][i]);
+         console.log(temp[j][i]);
+         sum += temp[j][i].precio;
+        //  console.log(sum);       
+        }              
+      }
+    this.totalPrice = sum;
+    console.log(this.totalPrice);
+  }
+
+  createTicket(eat:any, drink:any){
+    const time = new Date();
+    console.log(moment(time));
+    var pedido = { 
+      tiempo: time,
+      mesa: 1,
+      pedidoComida: eat,
+      pedidoBebida: drink,
+      estado: 'en espera', 
+      precio: this.totalPrice,
+      establishment: 'golden' //Nombre completo
+      };
+      this._burgerService.sendTicket(pedido).subscribe((res:any)=>{
+        console.log('backend joya');
+      },err =>{
+      console.log(err);
+    })
+  }
+
+  backMenu(){
+    this.stepMenu = false;
   }
 
   

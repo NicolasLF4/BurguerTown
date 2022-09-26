@@ -1,6 +1,6 @@
 export class Pedido {
     constructor(
-        public tiempo: Number,
+        public tiempo: Date,
         public mesa: Number,
         public pedidoComida: [String],
         public pedidoBebida: [String],

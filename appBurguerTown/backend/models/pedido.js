@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PedidoSchema = Schema({
-	tiempo: Number,
+	tiempo: String,
     mesa: Number,
 	pedidoComida: String,
 	pedidoBebida: String,

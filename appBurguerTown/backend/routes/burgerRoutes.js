@@ -44,12 +44,16 @@ router.get('/test', CocinaController.test);
 router.get('/getCategorys/:establishment,:type?', CocinaController.getCategorys);
 router.get('/getPlatos/:establishment,:category', CocinaController.getPlatos);
 router.get('/getAllPlatos/:establishment', CocinaController.getAllPlatos);
+router.get('/getTicket/:establishment', CocinaController.getTicket);
+
 
 router.delete('/deletePlato/:id', CocinaController.deletePlato);
 router.delete('/deleteCategory/:id', CocinaController.deleteCategory);
 
 router.post('/registerPlato', CocinaController.registerPlato);
 router.post('/registerCategory', CocinaController.registerCategory);
+router.post('/registerTicket', CocinaController.registerTicket);
+
 
 
 

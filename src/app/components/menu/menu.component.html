@@ -1,23 +1,28 @@
 <div class="container">
-    <div class="row">
-        <a class="btn-text" data-bs-toggle="modal" data-bs-target="#modal-pedido"  >Ver Pedido</a>
-    </div>
-    <div class="cont-select-menu bg-default" *ngIf="!stepMenu">
-        <div *ngFor="let dato of contCategorys">
-          
-                <div class="row justify-content-center">
-                    <a *ngIf="typeView == dato.type" class="category col-lg-6 col-sm-12 row" (click)="selectionCategory(dato.name)">
-                        <div class="cont-img-category col-lg-2 col-6">
-                            <img src="" class="img-category">
-                        </div>
-                        <div class="cont-text-category col-lg-10 col-sm-6">
-                            <h2 class="t-category">{{dato.name}}</h2>
-                            <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
-                    </a>
-                </div>
+    <div class="row" *ngIf="stepMenu">
+        <div class="col-6">
+            <a (click)="backMenu()"><i class="fa-solid fa-arrow-left arrow"></i></a>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn-text" data-bs-toggle="modal" data-bs-target="#modal-pedido" (click)="evaluateOrder()" >Ver Pedido</a>
         </div>
     </div>
+        <div class="cont-select-menu bg-default" *ngIf="!stepMenu">
+            <div *ngFor="let dato of contCategorys">
+                
+                    <div class="row justify-content-center">
+                        <a *ngIf="typeView == dato.type" class="category col-lg-6 col-sm-12 row" (click)="selectionCategory(dato.name)">
+                            <div class="cont-img-category col-lg-2 col-6">
+                                <img src="" class="img-category">
+                            </div>
+                            <div class="cont-text-category col-lg-10 col-sm-6">
+                                <h2 class="t-category">{{dato.name}}</h2>
+                                <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+                        </a>
+                    </div>
+            </div>
+        </div>
 </div>
 
 <!-- modal pedido -->
@@ -26,7 +31,7 @@
 <div class="modal" id="modal-pedido" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-1">
         
     <div class="modal-dialog">      
-          <!-- Contenido del modal -->
+          
 
         <div class="bg-default modal-content modal-color">
               <div class="modal-header">
@@ -35,12 +40,19 @@
               </div>
               <div class="modal-body">
                 <h3>Comidas</h3>
-                <div *ngFor="let data of contMenu">
-                    <div class="d-flex">
-                        <p class="label-cant">{{data.cant}}</p>
-                        <p class="label-cant">{{data.name}}</p>
+                <div *ngFor="let data of orderEat">
+                    <div class="d-flex" *ngFor="let dat of data">
+                        <p class="label-cant">{{dat.name}}</p>
+                        <p class="label-cant">{{dat.cant}}</p>
                     </div>
                 </div>
+                <div *ngFor="let date of orderDrink">
+                    <div class="d-flex" *ngFor="let dat of date">
+                        <p class="label-cant">{{dat.name}}</p>
+                        <p class="label-cant">{{dat.cant}}</p>
+                    </div>
+                </div>
+                <div class="precio-total"><p>{{totalPrice}}</p></div>
               </div>
               <div class="modal-footer">
              </div>
@@ -91,8 +103,14 @@
                     <a class="nav-menu"><i class="fa-solid fa-burger fa-xl"></i></a>
                 </div>
                 <div class="section-footer-menu mt-4">
-                    <span class="t-size">Precio Total</span>
-                    <span>$</span>
+                    <div class="d-flex">
+                        <div class="justify-content-start">
+                            <span class="t-size">Precio Total</span>
+                        </div>
+                        <div class="justify-content-end">
+                            <span class="t-size">${{totalPrice}}</span>
+                        </div>
+                    </div>
                     <div class="cont-btn-next m-3 text-center">
                         <a class="btn-next"><span class="t-btn">Siguiente</span></a>
                     </div>

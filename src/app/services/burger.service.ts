@@ -6,6 +6,7 @@ import { Global } from 'src/app/services/global';
 import { Category } from '../models/category.model';
 import { Local } from '../models/local.model';
 import Swal from 'sweetalert2';
+import { Pedido } from '../models/pedido.model';
 
 
 @Injectable({
@@ -63,6 +64,13 @@ import Swal from 'sweetalert2';
     ));
   }
 
+  getTicket(establishment: String){
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(this.url + "/getTicket/" + establishment, { headers: headers }).pipe(map(
+      resp => { return resp; }
+    ));
+  }
+
   deletePlato(id: string) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.delete(this.url + "/deletePlato/" + id, { headers: headers }).pipe(map(
@@ -109,5 +117,12 @@ import Swal from 'sweetalert2';
     localStorage.setItem('','');
   }
 
+  sendTicket(pedido: Pedido) {
+    let params = JSON.stringify(pedido);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.url + "/registerTicket/", params, { headers: headers }).pipe(map(
+      resp => { return resp; }
+    ));
+  }
 
 }
