@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
   public contCategorys: Category[] = [];
   public contMenu: ItemMenu[] = [];
   public stepMenu: Boolean = false; // Arrancan mostrando las categorias
+  public stepMenuN: Number = 1;
   public categoryNow: String = '';
   public contOrder:any = [];
   public totalPrice:number = 0;
@@ -41,7 +42,8 @@ export class MenuComponent implements OnInit {
     this._burgerService.getPlatos('golden', selection.toLowerCase()).subscribe(( r:any ) => {
       if(r){
         this.categoryNow = selection;
-        this.stepMenu = true;
+        this.stepMenuN = 2;
+        console.log(this.stepMenuN);
         this.makeItemMenu(r.platos,selection);
       }
     })
@@ -150,35 +152,31 @@ export class MenuComponent implements OnInit {
       for (let i = 0; i < category.length; i++) {
         if (localStorage.getItem('data'+category[i].name)) {
           if (category[i].type == 'eat') {
-            tempPushEat.push(JSON.parse(localStorage.getItem('data'+this.categoryNow)||''))            
+            tempPushEat.push(JSON.parse(localStorage.getItem('data'+category[i].name)||'')) 
           }else{
-            tempPushDrink.push(JSON.parse(localStorage.getItem('data'+this.categoryNow)||''))
+            tempPushDrink.push(JSON.parse(localStorage.getItem('data'+category[i].name)||''))
           }
-          tempPush.push(JSON.parse(localStorage.getItem('data'+this.categoryNow)||''));
+          tempPush.push(JSON.parse(localStorage.getItem('data'+category[i].name)||''));
           
-          console.log(tempPush[i]);         
+          // console.log(tempPush[i]);         
         }
       }
       this.calcTotalPrice(tempPush);
 
       this.orderEat = tempPushEat;
       this.orderDrink = tempPushDrink;
-      // this.contOrder = tempPush;
       this.createTicket(tempPushEat, tempPushDrink);
 
-      this._burgerService.getTicket('golden').subscribe((res:any)=>{
-        console.log(res);
-      })
     })
   }
 
   calcTotalPrice(temp:any){
-    console.log(temp);
+    // console.log(temp);
     var sum = 0;
       for (let j = 0; j < temp.length; j++) {
         for (let i = 0; i < temp[j].length; i++) {
         //  console.log(temp[j][i]);
-         console.log(temp[j][i]);
+        //  console.log(temp[j][i]);
          sum += temp[j][i].precio;
         //  console.log(sum);       
         }              
@@ -207,7 +205,20 @@ export class MenuComponent implements OnInit {
   }
 
   backMenu(){
-    this.stepMenu = false;
+    this.stepMenuN = 1;
+  }
+
+  finalOrder(){
+    this.evaluateOrder();
+    this.stepMenuN = 3;
+  }
+
+  drinkOrder(){
+    this.stepMenuN = 2
+  }
+
+  eatOrder(){
+    
   }
 
   

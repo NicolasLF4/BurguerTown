@@ -1,12 +1,12 @@
 body {
     font-family: 'Roboto';
-    background: #242424;
+    background: rgb(15, 15, 15);
 }
 
 
 
 .bg-default{
-    background: #242424 !important;
+    background: rgb(15, 15, 15) !important;
 }
 
 .border-radius {
@@ -62,7 +62,7 @@ body {
     /* border-bottom: 1px solid #E87B13; */
     
 }
-.cont-tarjet-category {
+.cont-tarjet-gradient {
     background: radial-gradient(221.28% 221.28% at 141.39% -69.89%, rgb(232 123 19 / 0%) 0%, rgb(232 123 19 / 5%) 35.42%, rgb(232 123 19 / 0%) 77.08%, rgb(232 123 19 / 11%) 100%) ,
     linear-gradient(202deg, #e87b132e -4.61%, rgba(232, 123, 19, 0) 36.46%, rgba(232, 123, 19, 0) 88.22%, #e87b1361 117.29%);
     border-radius: 5px;
@@ -197,7 +197,7 @@ padding: 8px;
     width: 18px;
     line-height: 18px;
     background: #E87B13;
-    color: #242424;
+    color: #f2f2f2;
     border-bottom: 2px 2px 2px 2px solid #E87B13;
     transition: all 0.2s ease;
     border-radius: 50%;
@@ -206,6 +206,44 @@ padding: 8px;
 .btn-redondo:hover{
     background: #000;
     color: #E87B13;
+}
+
+
+.title-default {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.description-default {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: center;
+    color:#CCCCCC;
+
+}
+
+.t-48 {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 47px;
+    color: #B0B0B0;
+
+}
+
+.t-24 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+
 }
 
 
