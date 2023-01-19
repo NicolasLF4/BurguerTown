@@ -20,12 +20,12 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'dashboard', component: DashboardComponent,
         children: [
-            {path: 'menu', component: MenuComponent, canActivate: [AuthGuard]},
             {path: 'configuracion', component: PanelConfigComponent, canActivate: [AuthGuard]},
             {path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard]},
             {path: 'funciones', component: FuncionesComponent, canActivate: [AuthGuard]}
         ]
-    }
+    },
+    {path: 'menu', component: MenuComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

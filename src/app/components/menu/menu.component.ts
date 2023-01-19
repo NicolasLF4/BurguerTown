@@ -22,13 +22,29 @@ export class MenuComponent implements OnInit {
   public totalPrice:number = 0;
   public orderEat:any = [];
   public orderDrink:any = [];
+  public buttonOrder: String;
+  public colorEat:string;
+  public colorDrink:string;
+  public colorFinalOrder:string;
+  public orderButton:string;
+  public btnDrinkFood:string;
+
+
 
   constructor(private _burgerService: BurgerService) {
     this.typeView = 'eat'; // drink
+    this.buttonOrder = 'Siguiente'; // finalizar
+    this.colorEat = 'colorOn';
+    this.colorDrink = 'colorOff';
+    this.colorFinalOrder = 'colorOff';
+    this.orderButton = 'col-12';
+    this.btnDrinkFood = 'Ir a las bebidas';
+
   }
 
   ngOnInit(): void {
     this.getCategorys(this.typeView);
+    this.evaluateOrder();
   }
 
   getCategorys(type: String){
@@ -43,6 +59,7 @@ export class MenuComponent implements OnInit {
       if(r){
         this.categoryNow = selection;
         this.stepMenuN = 2;
+        this.positionOrder(this.stepMenuN);
         console.log(this.stepMenuN);
         this.makeItemMenu(r.platos,selection);
       }
@@ -113,17 +130,21 @@ export class MenuComponent implements OnInit {
   addPlato(itemMenu:any){
     itemMenu.cant += 1;
     this.evaluateQuantity();
+    this.evaluateOrder();
   }
 
   deletePlato(itemMenu:any){
     itemMenu.cant -= 1;
     this.evaluateQuantity();
+    this.evaluateOrder();
   }
 
   toggleTypeFood(){
+    // this.colorIcon();
     this.evaluateQuantity();
-    if (this.typeView == 'eat'){this.typeView = 'drink';}else{this.typeView = 'eat';}
+    if (this.typeView == 'eat'){this.typeView = 'drink';}else{this.finalOrder();}
     this.stepMenu = false;
+    this.colorIcon();
     this.getCategorys(this.typeView);
   }
 
@@ -162,41 +183,56 @@ export class MenuComponent implements OnInit {
         }
       }
       this.calcTotalPrice(tempPush);
-
-      this.orderEat = tempPushEat;
-      this.orderDrink = tempPushDrink;
-      this.createTicket(tempPushEat, tempPushDrink);
+      this.orderEat = this.cleanPush(tempPushEat);
+      this.orderDrink = this.cleanPush(tempPushDrink);
+      console.log(this.orderEat);
+      
+      // console.log(tempPushEat);
+      // this.orderEat = tempPushEat;
+      // this.orderDrink = tempPushDrink;
+      this.createTicket(this.orderEat, this.orderDrink);
 
     })
   }
 
   calcTotalPrice(temp:any){
     // console.log(temp);
-    var sum = 0;
+    var mult = 0;
+
       for (let j = 0; j < temp.length; j++) {
         for (let i = 0; i < temp[j].length; i++) {
-        //  console.log(temp[j][i]);
-        //  console.log(temp[j][i]);
-         sum += temp[j][i].precio;
-        //  console.log(sum);       
+          mult += temp[j][i].precio * temp[j][i].cant;
         }              
       }
-    this.totalPrice = sum;
+      console.log(mult);
+    this.totalPrice = mult;
     console.log(this.totalPrice);
+  }
+
+  cleanPush(pedido:any){
+   let  tempPedido = pedido;
+   var cleanPush = [];
+   for (let i = 0; i < tempPedido.length; i++) {
+    for (let j = 0; j < tempPedido[i].length; j++) {
+      cleanPush.push(tempPedido[i][j]);
+    }}
+    return cleanPush
   }
 
   createTicket(eat:any, drink:any){
     const time = new Date();
     console.log(moment(time));
+    console.log(eat);
     var pedido = { 
-      tiempo: time,
-      mesa: 1,
-      pedidoComida: eat,
-      pedidoBebida: drink,
-      estado: 'en espera', 
-      precio: this.totalPrice,
-      establishment: 'golden' //Nombre completo
+      'tiempo': time,
+      'mesa': 6,
+      'pedidoComida': eat,
+      'pedidoBebida': drink,
+      'estado': 'en espera', 
+      'precio': this.totalPrice,
+      'establishment': 'golden' //Nombre completo
       };
+      console.log(pedido);
       this._burgerService.sendTicket(pedido).subscribe((res:any)=>{
         console.log('backend joya');
       },err =>{
@@ -210,15 +246,55 @@ export class MenuComponent implements OnInit {
 
   finalOrder(){
     this.evaluateOrder();
+    this.typeView = 'finalOrder';
+    this.buttonFinaly(this.typeView);
     this.stepMenuN = 3;
   }
 
-  drinkOrder(){
-    this.stepMenuN = 2
+  buttonFinaly(type: any){
+    if(type == 'finalOrder'){
+      this.buttonOrder = 'Finalizar Pedido'
+    }
   }
 
-  eatOrder(){
-    
+  colorIcon(){
+    if (this.typeView == 'eat'){
+      this.colorEat = 'colorOn';
+      this.colorDrink = 'colorOff';
+    } else if (this.typeView == 'drink'){
+      this.colorEat = 'colorOn';
+      this.colorDrink = 'colorOn';
+    } else if (this.typeView == 'finalOrder'){
+      this.colorEat = 'colorOn';
+      this.colorDrink = 'colorOn';
+      this.colorFinalOrder = 'colorOn';
+    }else{
+      this.colorEat = 'colorOn';
+    }
+  }
+
+  positionOrder(stepMenuN: any){
+    var value = stepMenuN
+    console.log(value)
+    if (value == 2){
+      this.orderButton = 'col-6';
+      console.log(this.orderButton)
+    } else {
+      this.orderButton = 'col-12';
+    }
+  }
+
+  skipFood(){
+    this.evaluateQuantity();
+    if (this.typeView == 'eat'){
+      this.typeView = 'drink';
+      this.btnDrinkFood = 'Ir a las comidas'
+    } else {
+      this.typeView = 'eat'
+    }
+    this.colorIcon();
+    this.stepMenu = false;
+    this.getCategorys(this.typeView);
   }
 
   

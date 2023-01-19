@@ -1,20 +1,26 @@
 
 <div class="bg-default">
 <div class="container">
-    <div class="row mt-3 pt-3" *ngIf="stepMenuN == 2">
-        <div class="col-6">
+    <div class="row  mt-4 ">
+        <div class="col-6" *ngIf="stepMenuN == 2" >
             <a (click)="backMenu()"><i class="fa-solid fa-arrow-left arrow"></i></a>
         </div>
-        <div class="col-6 text-end">
+        <div class="text-end" ngClass="orderButton">
             <a class="btn-text" data-bs-toggle="modal" data-bs-target="#modal-pedido" (click)="evaluateOrder()" >Ver Pedido</a>
         </div>
     </div>
+
+        <!-- Titulo Categorias -->
+
     <div class="t-section row" *ngIf="stepMenuN == 1">
         <div class="col-12">
             <h2 class="title-default">SELECCIÓN DE COMIDA</h2>
             <h3 class="description-default">Seleccione lo que desea comer el dia de hoy</h3>
         </div>
     </div>
+
+      <!-- categorias -->
+
         <div class="cont-select-menu" *ngIf="stepMenuN == 1">
             <div *ngFor="let dato of contCategorys" class="row">   
                     <div class="col-xl-12 col-lg-12 col-sm-12 col-12 ">
@@ -25,8 +31,8 @@
                                         <div class="img-category">
                                         </div>
                                         <div>
-                                            <h2 class="t-category">{{dato.name}}</h2>
-                                            <p class="description">Lorem ipsum, dolor sit amet consectetur</p>
+                                            <h2 class="t-category mb-0">{{dato.name}}</h2>
+                                            <p class="description mt-0">Lorem ipsum, dolor sit amet consectetur</p>
                                         </div>
                                     </div>
                                 </div>
@@ -52,14 +58,14 @@
               </div>
               <div class="modal-body">
                 <h3>Comidas</h3>
-                <div *ngFor="let data of orderEat">
-                    <div class="d-flex" *ngFor="let dat of data">
+                <div *ngFor="let dat of orderEat">
+                    <div class="d-flex">
                         <p class="label-cant">{{dat.name}}</p>
                         <p class="label-cant">{{dat.cant}}</p>
                     </div>
                 </div>
-                <div *ngFor="let date of orderDrink">
-                    <div class="d-flex" *ngFor="let dato of date">
+                <div *ngFor="let dato of orderDrink">
+                    <div class="d-flex">
                         <p class="label-cant">{{dato.name}}</p>
                         <p class="label-cant">{{dato.cant}}</p>
                     </div>
@@ -100,37 +106,39 @@
             </div>
         </div>
 
-        <!-- <div class="row">
+        <div class="row" *ngIf="typeView != 'finalOrder' ">
             <div class="text-center mt-4">
-                <a class="btn-text" (click)="toggleTypeFood()">Ir a las categorias...</a>
+                <a class="btn-text" (click)="skipFood()">{{btnDrinkFood}}...</a>
             </div>
-        </div> -->
+        </div>
 
 
 
 
         <div *ngIf="stepMenuN == 3">
             <h2 class="t-48 text-center mt-4">RESUMEN</h2>
-            <div class="row text-center">
-                <span class="t-24 mt-2 mb-4">Comida</span>
-                <div *ngFor="let dato of orderEat">
-                    <div class="row" *ngFor="let dat of dato">
-                        <div class="d-flex justify-content-center">
-                            <p class="t-name me-2">{{dat.name}}</p>
-                            <p class="t-name">-</p>
-                            <p class="t-precio ms-2">${{dat.precio}}</p>
+            <div class="row">
+                <div class="text-center">
+                    <span class="t-24 mt-2 mb-4">Comida</span>
+                        <div *ngFor="let dat of orderEat">
+                            <div class="row">
+                                <div class="d-flex justify-content-center">
+                                    <p class="t-name me-2">{{dat.cant}}x {{dat.name}}</p>
+                                    <p class="t-name">-</p>
+                                    <p class="t-precio ms-2">${{dat.precio}}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="row text-center"> 
                 <span class="t-24 mt-5 mb-4">Bebidas</span>
                 <div *ngFor="let data of orderDrink">
-                    <div class="row" *ngFor="let d of data">
+                    <div class="row">
                         <div class="d-flex justify-content-center">
-                            <p class="t-name me-2">{{d.name}}</p>
+                            <p class="t-name me-2">{{data.cant}}x {{data.name}}</p>
                             <p class="t-name">-</p>
-                            <p class="t-precio ms-2">{{d.precio}}</p>
+                            <p class="t-precio ms-2">{{data.precio}}</p>
                         </div>
                     </div>
                 </div>
@@ -144,22 +152,26 @@
             <div class="phantom-space"></div>
         </div>
         
-         <div class="section-menu">
+        <div class="section-menu">
                 <div class="cont-nav-menu text-center">
-                    <a class="nav-menu" (click)="eatOrder()"><i class="fa-solid fa-burger fa-xl"></i></a>
-                    <a class="nav-menu text-center" (click)="drinkOrder()"><i class="fa-solid fa-beer-mug-empty fa-xl"></i></a>
-                    <a class="nav-menu" (click)="finalOrder()"><i class="fa-solid fa-circle-check fa-xl"></i></a>
+                    <a class="nav-menu" [ngClass]="colorEat"><i class="fa-solid fa-burger fa-xl"></i></a>
+                    <a class="nav-menu text-center" [ngClass]="colorDrink"><i class="fa-solid fa-beer-mug-empty fa-xl"></i></a>
+                    <a class="nav-menu" [ngClass]="colorFinalOrder"><i class="fa-solid fa-circle-check fa-xl"></i></a>
                 </div>
                 <div class="section-footer-menu mt-4">
-                    <div class="mt-2 mb-2  text-center">
-                        <span class="t-size">Precio Total</span>
-                        <span class="t-size">${{totalPrice}}</span>
+                    <div class="mt-5 mb-4 w-100 d-flex">
+                        <div class="text-start w-100 ms-2">
+                            <span class="t-size">Precio Total</span>
+                        </div>
+                        <div class="me-2">
+                            <span class="t-size">${{totalPrice}}</span> 
+                        </div>
                     </div>
-                    <div class="cont-btn-next m-3 mb-4 text-center">
-                        <a class="btn-next"><span class="t-btn">Siguiente</span></a>
+                    <div class="cont-btn-next mb-4 text-center">
+                        <a class="btn-next" (click)="toggleTypeFood()"><span class="t-btn">{{buttonOrder}}</span></a>
                     </div>
                 </div>
-         </div>
+        </div>
     </div>
 </div>
 

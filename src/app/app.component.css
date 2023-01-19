@@ -64,12 +64,11 @@
     float: left;
 }
 
-.cont-header-category h3 {
+.title-category {
     font-size: 32px;
     font-family: 'Roboto';
     font-weight: 200;
-    color: #E87B13;
-    
+    color: #E87B13; 
 }
 
 .cont-header-category  {

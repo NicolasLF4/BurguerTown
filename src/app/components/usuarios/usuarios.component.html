@@ -1,1 +1,82 @@
-<p>usuarios works!</p>
+    <div class="row">
+        <div class="col-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2 class="title-section">INICIO</h2>
+        </div>
+    </div>
+    <div class="row">
+
+        <!--  BEBIDAS -->
+
+        <div class="col-5 ">
+            <div class="border-default">
+                <div class="row">
+                    <div class="col">
+                        <p class="title-category">BEBIDAS</p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="contTicket">
+                    <div class="" *ngFor="let data of contTicket">
+                        <div class="col-12">
+                            <div class="cont-subtitle">
+                                <p class="border-bottom border-color-1 subtitle">Mesa {{data.mesa}}</p>
+                            </div>  
+                        </div>
+                        <div class="col-12 mt-4">
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4">
+                                    <P>{{data.pedidoBebida}}</P>
+                                </div>
+                                <div class="col-4">
+                                    <div class="cont-btn-cocina text-center">
+                                        <a class="btn-cocina">PREPARAR</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COCINA -->
+
+        <div class="col-5 ">
+            <div class="border-default">
+                <div class="row">
+                    <div class="col">
+                        <p class="title-category">COCINA</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="cont-subtitle ">
+                            <p class="border-bottom border-color-1 subtitle">Mesa X</p>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <P></P>
+                            </div>
+                            <div class="col-4">
+                                <div class="cont-btn-cocina text-center">
+                                    <a class="btn-cocina">PREPARAR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 b">
+
+        </div>
+    </div>

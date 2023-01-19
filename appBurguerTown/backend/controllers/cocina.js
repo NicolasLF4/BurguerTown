@@ -253,7 +253,7 @@ var controller = {
             });
 
             if (!pedidos) return res.status(404).send({
-                message: 'No hay platos para mostrar'
+                message: 'No hay pedidos para mostrar'
             });
 
             return res.status(200).send({

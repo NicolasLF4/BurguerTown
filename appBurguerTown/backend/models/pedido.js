@@ -6,8 +6,8 @@ var Schema = mongoose.Schema;
 var PedidoSchema = Schema({
 	tiempo: String,
     mesa: Number,
-	pedidoComida: String,
-	pedidoBebida: String,
+	pedidoComida: [],
+	pedidoBebida: [],
 	estado: String,
 	precio: Number,
 	establishment: String,
